@@ -1,0 +1,29 @@
+[nix]
+channel = "stable-25_05"
+packages = ["bzip2"]
+
+[agent]
+expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Project Info"
+
+[[workflows.workflow]]
+name = "Project Info"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"=== Veyon 4.10.0 - macOS Port ===\" && echo \"\" && echo \"This is a C++ source code project adapted for macOS.\" && echo \"It cannot be compiled in this environment - it requires a macOS machine.\" && echo \"\" && echo \"Files created for macOS support:\" && find /home/runner/workspace/veyon-4.10.0/plugins/platform/macos -type f | wc -l && echo \"source files in plugins/platform/macos/\" && echo \"\" && echo \"Modified build system files:\" && echo \"  - CMakeLists.txt (fixed APPLE vs UNIX detection)\" && echo \"  - plugins/platform/CMakeLists.txt (added macOS subdirectory)\" && echo \"  - service/CMakeLists.txt (added launchd plist install)\" && echo \"\" && echo \"See INSTALL_MACOS.md for build instructions on macOS.\" && echo \"\" && echo \"Project structure:\" && ls /home/runner/workspace/veyon-4.10.0/plugins/platform/macos/"
+
+[workflows.workflow.metadata]
+outputType = "console"

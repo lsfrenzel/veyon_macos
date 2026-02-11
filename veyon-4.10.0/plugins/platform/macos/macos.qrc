@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/platform">
+        <file>apple-logo.png</file>
+    </qresource>
+</RCC>
