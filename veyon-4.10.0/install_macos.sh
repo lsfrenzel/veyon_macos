@@ -7,7 +7,16 @@ set -e
 
 echo "=== Veyon macOS Automation Script ==="
 
-# 1. Check for Homebrew
+# 1. Check for Xcode Command Line Tools
+if ! xcode-select -p &> /dev/null; then
+    echo "ERROR: Xcode Command Line Tools are not installed."
+    echo "Please run the following command in a new terminal window first:"
+    echo "    xcode-select --install"
+    echo "After the installation window finishes, run this script again."
+    exit 1
+fi
+
+# 2. Check for Homebrew
 if ! command -v brew &> /dev/null; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
