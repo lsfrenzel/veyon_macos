@@ -24,11 +24,14 @@ cd build
 
 # 4. Run CMake
 # Note: Using brew --prefix to find paths automatically
+# Explicitly enabling Master and Configurator for macOS
 cmake .. \
   -DCMAKE_PREFIX_PATH="$(brew --prefix qt@6);$(brew --prefix qca);$(brew --prefix openssl)" \
   -DCMAKE_BUILD_TYPE=Release \
   -DWITH_QT6=ON \
-  -DCMAKE_INSTALL_PREFIX=/usr/local
+  -DCMAKE_INSTALL_PREFIX=/usr/local \
+  -DCPACK_BUNDLE_ALL=ON \
+  -DAPPLE_EMBED_TYPE=BUNDLE
 
 # 5. Build
 echo "Building Veyon (this may take a while)..."
